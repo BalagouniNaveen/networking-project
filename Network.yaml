@@ -1,0 +1,28 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-egress-specific-ip
+  namespace: networking-project  # Replace with your namespace if different
+spec:
+  podSelector:
+    matchLabels:
+      app: my-app  # Replace with your application's label
+  policyTypes:
+  - Egress
+  egress:
+  - to:
+    - ipBlock:
+        cidr: 192.168.1.0/24  # Replace with the specific IP range you want to allow
+    ports:
+    - protocol: TCP
+      port: 80
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: deny-all-traffic
+  namespace: networking-project  # Replace with your namespace if different
+spec:
+  podSelector: {}
+  policyTypes:
+  - Ingress
+  - Egress

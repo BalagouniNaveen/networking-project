@@ -1,0 +1,19 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-my-app-traffic
+  namespace: networking-project  # Replace with your namespace if different
+spec:
+  podSelector:
+    matchLabels:
+      app: my-app  # Replace with your application's label
+  policyTypes:
+  - Ingress
+  ingress:
+  - from:
+    - podSelector:
+        matchLabels:
+          app: allowed-app  # Replace with the label of pods allowed to send traffic
+    ports:
+    - protocol: TCP
+      port: 80

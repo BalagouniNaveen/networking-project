@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: nginx-ingress-configuration
+  namespace: networking-project
+data:
+  client-max-body-size: "50m"
+  proxy-connect-timeout: "30s"
+  proxy-read-timeout: "30s"
+  use-proxy-protocol: "true" # If using a load balancer
+  enable-vts-status: "true" # Enable VTS status monitoring (optional)
+
