@@ -153,17 +153,10 @@ kubectl get all - get the status of all pods , deployment** ,
 
 
 
+**kubectl port-forward service/my-app-service -n namespace 
+8080:80**
 
 
-
-
-
-
-
-
-
-kubectl port-forward service/my-app-service -n namespace 
-8080:80
 
 
 
